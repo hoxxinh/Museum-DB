@@ -2,14 +2,14 @@
 session_start();
 
     include("classes/connect.php");
-    include("classes/login.php");
+    include("classes/elogin.php");
     
-    $email = "";
+    $username = "";
     $password = "";
     
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $login = new Login();
-        $result = $login->evaluate($_POST);
+        $elogin = new Elogin();
+        $result = $elogin->evaluate($_POST);
         
         if ($result != ""){
             echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
@@ -17,17 +17,17 @@ session_start();
             echo $result;
             echo "</div>";
         } else {
-            header("Location: index.php");
+            header("Location: employee_portal.php");
             die;
         }
             
-        $email = $_POST['email'];
+        $username = $_POST['username'];
     }
 ?>
 
 <html>
     <head>
-        <title>Museum of Fine Arts | Login</title>
+        <title>Museum of Fine Arts | Employeee Portal</title>
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
         <style>
 
@@ -163,10 +163,10 @@ session_start();
             </div>
         </div>
         <div id="Bar_Create"> 
-            Log in with MoFA account<br><br>
+            MFAH - Employeee Portal<br><br>
             <form method="post" action="">
                 <div class="input-group">
-                    <input value ="<?php echo $email ?>" name="email" type="text" id="text" placeholder="Email">
+                    <input value ="<?php echo $username ?>" name="username" type="text" id="text" placeholder="Username">
                 </div>           
                 <div class="input-group">
                     <input name="password" type="password" id="text" placeholder="Password">
@@ -178,7 +178,7 @@ session_start();
         </div>
         <div id="Bar_Login">
             <div id="login-group" class="input-group">
-                <a href="signup.php" id="login">Need an account? <span id="login-text">Create</span></a>
+                <a href="index.php" id="login">Please contact admin for an account <span id="login-text"></span></a>
             </div>
         </div>
 
