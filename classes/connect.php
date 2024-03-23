@@ -1,5 +1,4 @@
 <?php
-    //require 'C:\wamp64\www\museum\vendor\autoload.php';
 
 class Database {
     
